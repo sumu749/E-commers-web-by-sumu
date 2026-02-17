@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SwiftCart E-Commerce</title>
+
+        <!-- Daisy Ui -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <!-- manrope font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- CSS Link -->
+        <link rel="stylesheet" href="./output.css" />
+    </head>
+    <body>
+        <!-- Navbar -->
+        <div class="shadow-sm py-3 flex items-center">
+            <div class="flex items-center justify-between w-full px-4 lg:px-28">
+                <!-- Mobile menu and logo -->
+                <div class="flex items-center gap-2 lg:gap-4">
+                    <div class="dropdown lg:hidden">
+                        <div
+                            tabindex="0"
+                            role="button"
+                            class="btn btn-ghost p-2 min-h-0 h-auto"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 text-white"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16"
+                                />
+                            </svg>
+                        </div>
+                        <ul
+                            tabindex="-1"
+                            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-48 p-2 shadow"
+                        >
+                            <li><a class="">Home</a></li>
+                            <li><a class="">Products</a></li>
+                            <li><a class="">About</a></li>
+                            <li><a class="">Contact</a></li>
+                        </ul>
+                    </div>
+                    <span class="text-lg lg:text-xl font-bold text-indigo-600"
+                        >SwiftCart</span
+                    >
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex flex-1 justify-center">
+                    <ul class="menu menu-horizontal px-1 gap-4 font-semibold">
+                        <li>
+                            <a class="hover:text-indigo-500 transition-colors"
+                                >Home</a
+                            >
+                        </li>
+                        <li>
+                            <a class="hover:text-indigo-500 transition-colors"
+                                >Products</a
+                            >
+                        </li>
+                        <li>
+                            <a class="hover:text-indigo-500 transition-colors"
+                                >About</a
+                            >
+                        </li>
+                        <li>
+                            <a class="hover:text-indigo-500 transition-colors"
+                                >Contact</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="lg:px-0">
+                    <a><i class="fa-solid fa-cart-shopping"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero section -->
+        <div class="bg-indigo-50 py-12">
+            <div class="container mx-auto px-4 lg:px-28">
+                <h1
+                    class="text-3xl lg:text-5xl font-bold text-center text-indigo-900"
+                >
+                    Welcome to SwiftCart
+                </h1>
+                <p class="text-center mt-4 text-lg text-indigo-700">
+                    Your one-stop shop for all your needs.
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
