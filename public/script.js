@@ -9,8 +9,11 @@ async function loadTrendingProducts() {
 
         const container = document.getElementById("products-container");
         container.innerHTML = "";
+        // store products for modal lookup
+        const productMap = new Map();
 
         topProducts.forEach((product) => {
+            productMap.set(product.id, product);
             const rating = product.rating?.rate || 0;
             const ratingCount = product.rating?.count || 0;
             const categoryMap = {
@@ -45,19 +48,36 @@ async function loadTrendingProducts() {
                         $${product.price.toFixed(2)}
                     </p>
                     <div class="flex gap-2">
-                        <button class="flex-1 bg-gray-100 text-gray-900 py-2 rounded text-sm font-semibold hover:bg-gray-200">
+                        <button data-id="${product.id}" class="details-btn flex-1 bg-gray-100 text-gray-900 py-2 rounded text-sm font-semibold hover:bg-gray-200">
                             <span>
                                 <i class="fa-solid fa-eye"></i>
                             </span>
                             <span>Details</span>
                         </button>
-                        <button class="flex-1 bg-indigo-600 text-white py-2 rounded text-sm font-semibold hover:bg-indigo-700">
+                        <button data-id="${product.id}" class="add-btn flex-1 bg-indigo-600 text-white py-2 rounded text-sm font-semibold hover:bg-indigo-700">
                             Add
                         </button>
                     </div>
                 </div>
             `;
             container.appendChild(productCard);
+
+            // attach event listeners for buttons
+            const detailsBtn = productCard.querySelector(".details-btn");
+            const addBtn = productCard.querySelector(".add-btn");
+            if (detailsBtn) {
+                detailsBtn.addEventListener("click", () => {
+                    const id = Number(detailsBtn.getAttribute("data-id"));
+                    const p = productMap.get(id);
+                    if (p) openModal(p);
+                });
+            }
+            if (addBtn) {
+                addBtn.addEventListener("click", () => {
+                    const id = Number(addBtn.getAttribute("data-id"));
+                    addToCart(id, productMap.get(id));
+                });
+            }
         });
     } catch (error) {
         console.error("Error loading products:", error);
@@ -68,3 +88,54 @@ async function loadTrendingProducts() {
 
 // Load products when page loads
 document.addEventListener("DOMContentLoaded", loadTrendingProducts);
+
+// CART & MODAL UTILS
+let cartCount = Number(localStorage.getItem("cartCount") || "0");
+const cartCountEl = document.getElementById("cart-count");
+function updateCartBadge() {
+    if (cartCountEl) cartCountEl.textContent = String(cartCount);
+}
+function addToCart(id, product) {
+    cartCount += 1;
+    localStorage.setItem("cartCount", String(cartCount));
+    updateCartBadge();
+}
+
+// Modal functions
+const modal = document.getElementById("product-modal");
+const modalImage = document.getElementById("modal-image");
+const modalTitle = document.getElementById("modal-title");
+const modalDesc = document.getElementById("modal-desc");
+const modalPrice = document.getElementById("modal-price");
+const modalRating = document.getElementById("modal-rating");
+const modalAdd = document.getElementById("modal-add");
+const modalClose = document.getElementById("modal-close");
+const modalClose2 = document.getElementById("modal-close-2");
+
+function openModal(product) {
+    if (!modal) return;
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+    if (modalImage) modalImage.src = product.image;
+    if (modalTitle) modalTitle.textContent = product.title;
+    if (modalDesc) modalDesc.textContent = product.description;
+    if (modalPrice) modalPrice.textContent = `$${product.price.toFixed(2)}`;
+    if (modalRating)
+        modalRating.textContent = `${(product.rating?.rate || 0).toFixed(1)} (${product.rating?.count || 0})`;
+    if (modalAdd) {
+        modalAdd.onclick = () => {
+            addToCart(product.id, product);
+            closeModal();
+        };
+    }
+}
+function closeModal() {
+    if (!modal) return;
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+}
+if (modalClose) modalClose.addEventListener("click", closeModal);
+if (modalClose2) modalClose2.addEventListener("click", closeModal);
+
+// initialize badge
+updateCartBadge();

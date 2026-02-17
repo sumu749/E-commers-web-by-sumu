@@ -98,7 +98,16 @@
 
                 <!-- CTA Button -->
                 <div class="lg:px-0">
-                    <a><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a id="cart-button" class="relative inline-block">
+                        <i
+                            class="fa-solid fa-cart-shopping text-xl text-gray-800"
+                        ></i>
+                        <span
+                            id="cart-count"
+                            class="absolute -top-2 -right-3 bg-indigo-600 text-white text-xs rounded-full w-5 h-5 grid place-items-center"
+                            >0</span
+                        >
+                    </a>
                 </div>
             </div>
         </div>
@@ -257,7 +266,9 @@
             <div class="container mx-auto px-4 lg:px-28">
                 <!-- Section Header -->
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
+                    <h2
+                        class="text-3xl lg:text-4xl font-bold text-gray-900 mb-3"
+                    >
                         Trending Now
                     </h2>
                     <p class="text-gray-600 text-lg">
@@ -266,14 +277,73 @@
                 </div>
 
                 <!-- Products Grid -->
-                <div id="products-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div
+                    id="products-container"
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
                     <!-- Loading state -->
-                    <div class="text-center text-gray-600">Loading products...</div>
+                    <div class="text-center text-gray-600">
+                        Loading products...
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- Product Modal -->
+        <div
+            id="product-modal"
+            class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50"
+        >
+            <div
+                class="bg-white rounded-lg max-w-3xl w-full mx-4 overflow-hidden"
+            >
+                <div class="flex justify-end p-3">
+                    <button
+                        id="modal-close"
+                        class="text-gray-600 hover:text-gray-900 text-2xl"
+                    >
+                        &times;
+                    </button>
+                </div>
+                <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex items-center justify-center">
+                        <img
+                            id="modal-image"
+                            src=""
+                            alt=""
+                            class="max-h-80 object-contain"
+                        />
+                    </div>
+                    <div>
+                        <h3
+                            id="modal-title"
+                            class="text-2xl font-bold mb-2"
+                        ></h3>
+                        <p id="modal-desc" class="text-gray-600 mb-4"></p>
+                        <p id="modal-price" class="text-xl font-bold mb-2"></p>
+                        <div class="flex items-center gap-2 mb-4">
+                            <i class="fa-solid fa-star text-yellow-400"></i>
+                            <span id="modal-rating" class="text-sm"></span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button
+                                id="modal-add"
+                                class="bg-indigo-600 text-white px-4 py-2 rounded"
+                            >
+                                Add to cart
+                            </button>
+                            <button
+                                id="modal-close-2"
+                                class="bg-gray-100 px-4 py-2 rounded"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Script to fetch and display products -->
         <script src="./script.js"></script>
-
     </body>
 </html>
