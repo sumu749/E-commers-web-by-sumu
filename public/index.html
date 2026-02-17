@@ -99,17 +99,41 @@
             </div>
         </div>
 
-        <!-- Hero section -->
-        <div class="bg-indigo-50 py-12">
-            <div class="container mx-auto px-4 lg:px-28">
-                <h1
-                    class="text-3xl lg:text-5xl font-bold text-center text-indigo-900"
-                >
-                    Welcome to SwiftCart
-                </h1>
-                <p class="text-center mt-4 text-lg text-indigo-700">
-                    Your one-stop shop for all your needs.
-                </p>
+        <!-- Hero section with banner image -->
+        <div
+            class="relative bg-cover bg-center py-36 md:py-56 min-h-120 md:min-h-180"
+            style="
+                background-image:
+                    linear-gradient(
+                        90deg,
+                        rgba(17, 24, 39, 0.9) 0%,
+                        rgba(17, 24, 39, 0.7) 40%,
+                        rgba(17, 24, 39, 0.2) 100%
+                    ),
+                    url(&quot;../Assets/banner-image.png&quot;);
+                background-size: cover;
+                background-position: center;
+            "
+        >
+            <div
+                class="container mx-auto px-4 lg:px-28 relative z-10 text-white"
+            >
+                <div class="max-w-2xl">
+                    <h1 class="text-3xl lg:text-5xl font-bold">
+                        Best Collection For You
+                    </h1>
+                    <p class="mt-4 text-lg">
+                        Discover the latest trends in fashion, electronics, and
+                        more. Shop with confidence and style at SwiftCart.
+                    </p>
+                    <div class="mt-6">
+                        <a
+                            class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-2 rounded"
+                        >
+                            Shop Now
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
