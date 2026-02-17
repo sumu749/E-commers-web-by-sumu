@@ -281,11 +281,48 @@ function openModal(product) {
             closeModal();
         };
     }
+    // wire Buy Now button if present
+    const modalBuy = document.getElementById("modal-buy");
+    if (modalBuy) {
+        modalBuy.onclick = () => {
+            addToCart(product.id, product);
+
+            alert(
+                "Product added to cart. Proceed to checkout (not implemented).",
+            );
+            closeModal();
+        };
+    }
+
+    // close when clicking outside the dialog (overlay)
+    const onOverlayClick = (e) => {
+        if (e.target === modal) closeModal();
+    };
+    modal.addEventListener("click", onOverlayClick);
+
+    // close on Escape key
+    const onKeyDown = (e) => {
+        if (e.key === "Escape") closeModal();
+    };
+    document.addEventListener("keydown", onKeyDown);
+
+    // store listeners so they can be removed on close
+    modal._onOverlayClick = onOverlayClick;
+    modal._onKeyDown = onKeyDown;
 }
 function closeModal() {
     if (!modal) return;
     modal.classList.add("hidden");
     modal.classList.remove("flex");
+    // remove listeners added by openModal
+    if (modal._onOverlayClick) {
+        modal.removeEventListener("click", modal._onOverlayClick);
+        delete modal._onOverlayClick;
+    }
+    if (modal._onKeyDown) {
+        document.removeEventListener("keydown", modal._onKeyDown);
+        delete modal._onKeyDown;
+    }
 }
 if (modalClose) modalClose.addEventListener("click", closeModal);
 if (modalClose2) modalClose2.addEventListener("click", closeModal);
