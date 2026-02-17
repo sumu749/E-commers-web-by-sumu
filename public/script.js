@@ -292,3 +292,34 @@ if (modalClose2) modalClose2.addEventListener("click", closeModal);
 
 // initialize badge
 updateCartBadge();
+
+// Highlight active nav link based on current page
+function setActiveNav() {
+    const current = (
+        window.location.pathname.split("/").pop() || "index.html"
+    ).toLowerCase();
+    const anchors = document.querySelectorAll(".fixed a[href]");
+    anchors.forEach((a) => {
+        try {
+            const hrefPath = new URL(
+                a.getAttribute("href"),
+                window.location.href,
+            ).pathname
+                .split("/")
+                .pop()
+                .toLowerCase();
+            if (
+                (hrefPath === "" && current === "index.html") ||
+                hrefPath === current
+            ) {
+                a.classList.add("text-indigo-600", "font-semibold");
+            } else {
+                a.classList.remove("text-indigo-600", "font-semibold");
+            }
+        } catch (e) {
+            // ignore invalid URLs
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", setActiveNav);
