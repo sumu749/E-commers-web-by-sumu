@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Products - SwiftCart</title>
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+            rel="stylesheet"
+        />
+
+        <link rel="stylesheet" href="./output.css" />
+    </head>
+    <body class="bg-gray-50 min-h-screen font-sans">
+        <!-- Navbar -->
+        <div
+            class="fixed top-0 left-0 right-0 bg-white shadow-sm py-3 flex items-center z-50"
+        >
+            <div
+                class="mx-auto flex items-center justify-between w-full px-4 lg:px-28"
+            >
+                <!-- Mobile menu and logo -->
+                <div class="flex items-center gap-2 lg:gap-4">
+                    <div class="dropdown lg:hidden">
+                        <div
+                            tabindex="0"
+                            role="button"
+                            class="btn btn-ghost p-2 min-h-0 h-auto text-gray-800"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 text-gray-800"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16"
+                                />
+                            </svg>
+                        </div>
+                        <ul
+                            tabindex="-1"
+                            class="menu menu-sm dropdown-content bg-white border border-gray-100 rounded-box z-50 mt-3 w-48 p-2 shadow-lg"
+                        >
+                            <li><a href="./index.html">Home</a></li>
+                            <li><a href="./products.html">Products</a></li>
+                            <li><a href="./about.html">About</a></li>
+                            <li><a href="./contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <span class="text-lg lg:text-xl font-bold text-indigo-600"
+                        >SwiftCart</span
+                    >
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex flex-1 justify-center">
+                    <ul class="menu menu-horizontal px-1 gap-4 font-semibold">
+                        <li>
+                            <a
+                                href="./index.html"
+                                class="hover:text-indigo-500 transition-colors"
+                                >Home</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="./products.html"
+                                class="hover:text-indigo-500 transition-colors"
+                                >Products</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="./about.html"
+                                class="hover:text-indigo-500 transition-colors"
+                                >About</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="./contact.html"
+                                class="hover:text-indigo-500 transition-colors"
+                                >Contact</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="lg:px-0">
+                    <a id="cart-button" class="relative inline-block">
+                        <i
+                            class="fa-solid fa-cart-shopping text-xl text-gray-800"
+                        ></i>
+                        <span
+                            id="cart-count"
+                            class="absolute -top-2 -right-3 bg-indigo-600 text-white text-xs rounded-full w-5 h-5 grid place-items-center"
+                            >0</span
+                        >
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Section -->
+        <main class="max-w-6xl mx-auto px-4 py-8 mt-20">
+            <h1 class="text-3xl font-bold text-gray-900 mb-6 text-center">
+                Our Products
+            </h1>
+
+            <div class="flex justify-center mb-6">
+                <div
+                    id="categories-container"
+                    class="flex flex-wrap gap-3"
+                ></div>
+            </div>
+
+            <div
+                id="products-container"
+                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+            ></div>
+        </main>
+
+        <script src="/script.js"></script>
+    </body>
+</html>
